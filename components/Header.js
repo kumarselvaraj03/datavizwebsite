@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from 'next/image'
 import NavItem from "./NavItem";
 import { UserCircleIcon } from '@heroicons/react/24/solid'
@@ -10,34 +10,32 @@ const MENU_LIST = [
     { text: "Pricing", href: "/contact" },
 ];
 
+const RIGHT_MENU_LIST = [
+    { text: "Sign in", href: "/login" },
+    { text: "Sign up", href: "/register" },
+];
+
 function Header() {
-    const [navActive, setNavActive] = useState(null);
-  const [activeIdx, setActiveIdx] = useState(-1);
   return (
-    <header className='sticky top-0 z-50 flex justify-between	 bg-white shadow-md p-2 md:px-4'>
+    <header className='sticky top-0 z-50 flex justify-between bg-white shadow-md p-2 md:px-4'>
         {/* Left  */}
-        <div className='relative flex items-center justify-start cursor-pointer'>
+        <div className='relative   cursor-pointer'>
             <Image
             src="https://ik.imagekit.io/dataviz/dv-logo.png"
             width={180}
             height={52}
             alt="DataViz"
+            priority
             />
         </div>
         {/* Middle  */}
-        <div className={`${navActive ? "active" : ""} nav__menu-list gap-4 justify-center items-center hidden md:flex `}>
-          {MENU_LIST.map((menu, idx) => (
-            <div
-              onClick={() => {
-                setActiveIdx(idx);
-                setNavActive(false);
-              }}
-              key={menu.text}
-            >
-              <NavItem active={activeIdx === idx} {...menu} />
-            </div>
-          ))}
-        </div>
+        <ul className="gap-4 flex items-center justify-center hidden md:flex ">
+            {MENU_LIST.map((menu, idx) => (
+                    <li key={menu.text} >
+                        <NavItem {...menu} />
+                    </li>
+            ))}           
+        </ul>
         {/* Right  */}
         <div className='flex items-center justify-end'>
             <UserCircleIcon className="h-8 w-8 text-slate-400 cursor-pointer hover:text-slate-900" />
