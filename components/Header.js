@@ -2,6 +2,7 @@ import React from "react";
 import Image from 'next/image'
 import NavItem from "./NavItem";
 import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon } from '@heroicons/react/24/solid'
 
 const MENU_LIST = [
     { text: "Home", href: "/" },
@@ -39,6 +40,8 @@ function Header() {
         {/* Right  */}
         <div className='flex items-center justify-end'>
             <UserCircleIcon className="h-8 w-8 text-slate-400 cursor-pointer hover:text-slate-900" />
+            <Bars3Icon className="h-8 w-8 text-slate-400 cursor-pointer hover:text-slate-900 inline-flex md:hidden ml-1	" />
+
         </div>
     </header>
   )
