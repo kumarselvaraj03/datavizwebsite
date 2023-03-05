@@ -8,14 +8,13 @@ const MENU_LIST = [
     { text: "Features", href: "/about" },
     { text: "Examples", href: "/contact" },
     { text: "Pricing", href: "/contact" },
-    { text: "Sign up", href: "/contact" },
 ];
 
 function Header() {
     const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
   return (
-    <header className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-2 md:px-10'>
+    <header className='sticky top-0 z-50 flex justify-between	 bg-white shadow-md p-2 md:px-4'>
         {/* Left  */}
         <div className='relative flex items-center justify-start cursor-pointer'>
             <Image
@@ -26,7 +25,7 @@ function Header() {
             />
         </div>
         {/* Middle  */}
-        <div className={`${navActive ? "active" : ""} nav__menu-list flex gap-4 justify-center items-center`}>
+        <div className={`${navActive ? "active" : ""} nav__menu-list gap-4 justify-center items-center hidden md:flex `}>
           {MENU_LIST.map((menu, idx) => (
             <div
               onClick={() => {
